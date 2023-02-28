@@ -1,20 +1,31 @@
 .inputContainer {
-    display: flex;
-    /* justify-content: center;
-    align-items: center; */
-    background-color: none;
-    padding: 10px 15px;
+  /* display: flex; */
+  color: whitesmoke;
+  align-items: center;
+  background-color: none;
+  padding: 5px 15px;
+  position: relative;
 }
 
-.label {
-    width: 100px;
-    text-align: left;
-    font-size: 18px;
-    font-weight: 600;
+input::placeholder {
+  position: absolute;
+  transition: 0.2s;
+  font-size: 12px;
+  bottom: 10px;
 }
 
-.inputContainer input{
-    width: 200px;
-    outline: none;
-    height: 25px;
+.inputContainer input {
+  background-color: var(--bgColor);
+  width: 300px;
+  outline: none;
+  color: whitesmoke;
+  height: 60px;
+  border: none;
+  border-bottom: 1px solid whitesmoke;
+  /* border-radius: 5px; */
 }
+
+input:focus::placeholder{
+    bottom: 70%;
+}
+

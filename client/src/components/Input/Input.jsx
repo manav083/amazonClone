@@ -5,16 +5,14 @@ const Input = (props) => {
   return (
     <>
       <div className="inputContainer">
-        <div className="label">
-          <label id={props.id} name={props.id}>
-            {props.label}
-          </label>
-        </div>
         <input
           type={props.type}
           for={props.id}
+          style={props.style}
+          placeholder={props.placeholder}
           value={props.value}
           onChange={props.action}
+          autoComplete="false"
           required={props.require === "true" ? true : false}
         />
       </div>
