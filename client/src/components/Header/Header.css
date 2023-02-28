@@ -1,0 +1,94 @@
+.Header{
+    height: 60px;
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    background-color: var(--bgColor);
+    color: whitesmoke;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2) ;
+    transition: .4s;
+    position: sticky;
+    top: 0;
+}
+.Header > div{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* border: solid 1px blueviolet; */
+}
+.Header__SideBar{
+    width: 60px;
+}
+.Header__Logo{
+    width: 150px;
+}
+.Header__Location{
+    width: 200px;
+}
+.Header__Location>button{
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    height: 100%;
+    width: 100%;
+    font-size: 15px;
+    font-weight: 600;
+    /* background-color: transparent; */
+    background-color: rgba(245, 245, 245, 0.1);
+    color: whitesmoke;
+    transition: .2s;
+}
+.Header__SearchBar{
+    margin-inline: 20px;
+    flex: 1;
+    display: flex;
+    overflow: hidden;
+    border-radius: 5px;
+}
+.Header__SearchBar>input{
+    height: 100%;
+    flex-grow: 1;
+    border: none;
+    outline: none;
+    padding-inline: 20px;
+    background-color: rgba(245, 245, 245);
+}
+.Header__SearchBar>button{
+    height: 100%;
+    width: 60px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    /* background-color: rgba(245, 245, 245); */
+    background-color: rgb(255, 196, 0);
+    color: #222;
+}
+.Header__Username{
+    width: 200px;
+}
+.Header__Account{
+    width: 80px;
+}
+.Header__Cart{
+    width: 80px;
+}
+.Header__Account>button,.Header__Cart>button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: whitesmoke;
+    transition: .2s;
+}
+.Header__Account>button:hover,.Header__Cart>button:hover{
+    background: rgba(245, 245, 245, 0.1);
+}

@@ -1,0 +1,72 @@
+.SideBar{
+    position: fixed;
+    height: 100vh;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    z-index: 999;
+    animation: SideBar_Open .3s ease-in forwards;
+}
+.SideBar.close{
+    display: none;
+}
+
+@keyframes SideBar_Open{
+    0%{display: none;opacity: 0;}
+    100%{display: flex; opacity: 1;}
+}
+.SideBar__Drawer{
+    position: absolute;
+    left: -100%;
+    height: 100vh;
+    min-width: 300px;
+    width: 25%;
+    background-color: whitesmoke;
+    animation: sideDrawer .5s   forwards;
+}
+@keyframes sideDrawer{
+    100%{left: 0;}
+}
+
+.SideBar__Drawer__header{
+    background-color: var(--bgColor);
+    height: 60px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+}
+.SideBar__Drawer__header > button{
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: whitesmoke;
+    transition: .2s;
+}
+.SideBar__Drawer__header > button:hover{
+    background: rgba(245, 245, 245, 0.1);
+    color: red;
+}
+.SideBar__Drawer__items{
+    color: #222;
+    width: 100%;
+    padding: 20px;
+    border-bottom: solid .5px #33333363;
+    transition: .2s;
+    cursor: pointer;
+}
+.SideBar__Drawer__items:hover{
+    background-color: #222;
+    color: whitesmoke;    
+}
