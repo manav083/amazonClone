@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import Input from "../../Components/Input/Input";
-import { Link } from "react-router-dom";
 import Button from "../../Components/Button/Button";
-import "./Login.css";
+import "./Register.css";
+import "../Login/Login.css";
+import { Link } from "react-router-dom";
 
-const Login = () => {
+const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
+  const [mobile, setMobile] = useState("");
 
   //   console.log(email);
   return (
@@ -20,9 +23,25 @@ const Login = () => {
             fontSize: 26,
           }}
         >
-          Sign in
+          Create Account
         </h1>
         <form>
+          <Input
+            type="text"
+            require="true"
+            placeholder="Name"
+            id="name"
+            action={(e) => setName(e.target.value)}
+            value={name}
+          />
+          <Input
+            type="number"
+            require="true"
+            placeholder="Phone Number"
+            id="phonenumber"
+            action={(e) => setMobile(e.target.value)}
+            value={mobile}
+          />
           <Input
             type="email"
             require="true"
@@ -39,19 +58,16 @@ const Login = () => {
             action={(e) => setPassword(e.target.value)}
             value={password}
           />
-          <Button buttonText="Sign in" />
+          <Button buttonText="Register" />
         </form>
         <div className="bottomLine">
-          <p>New to Ecommerce?</p>
-        </div>
-        <div className="bottomLink">
-          <Link to="/register">
-            <p>Create Your Ecommerce Account</p>
-          </Link>
+          <p>
+            Already have an account? <Link to="/login">Sign in</Link>
+          </p>
         </div>
       </div>
     </div>
   );
 };
 
-export default Login;
+export default Register;
