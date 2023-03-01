@@ -58,7 +58,7 @@ const Header = () => {
       </div>
       <div className="Header__Cart">
         <button>
-          <span style={{ fontSize: "14px", marginRight: "10px" }}>Cart </span>
+          <div className="cart__count">0</div>
           <i class="fa-solid fa-cart-shopping"></i>
         </button>
       </div>

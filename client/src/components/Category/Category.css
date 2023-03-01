@@ -1,0 +1,26 @@
+.Category{
+    padding: 20px;
+    background-color: whitesmoke;
+    min-width: 250px;
+    width: calc(25% - 10px);
+    margin: 5px;
+    min-height: 420px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 5px;
+}
+.Category > img{
+    margin-top: auto;
+    width: 100%;
+    height: auto;
+    /* aspect-ratio: 8/9; */
+    object-fit:cover ;
+}
+.Category > p{
+    height: 20px;
+    font-size: 15px;
+    text-decoration: underline;
+    color: rgb(89, 0, 255);
+    cursor: pointer;
+}
