@@ -12,7 +12,8 @@ const Header = () => {
     <div className="Header">
       <div className="Header__SideBar">
         <i
-          class="fa-solid fa-2x fa-bars"
+          className="fa-solid fa-2x fa-bars"
+          style={{ cursor: "pointer" }}
           onClick={() => setSideBarStatus(!sideBarStatus)}
         ></i>
         <SideBar
@@ -26,7 +27,7 @@ const Header = () => {
       <div className="Header__Location">
         <button onClick={() => setModalStatus(!modalStatus)}>
           <i
-            class="fa-solid fa-location-dot"
+            className="fa-solid fa-location-dot"
             style={{ marginRight: "10px", fontSize: "20px" }}
           ></i>
           Select Location
@@ -45,7 +46,7 @@ const Header = () => {
           onInput={(e) => setSearchValue(e.target.value)}
         />
         <button>
-          <i class="fa-solid fa-2x fa-magnifying-glass"></i>
+          <i className="fa-solid fa-2x fa-magnifying-glass"></i>
         </button>
       </div>
       <div className="Header__Username">
@@ -53,13 +54,13 @@ const Header = () => {
       </div>
       <div className="Header__Account">
         <button>
-          <i class="fa-solid fa-user"></i>
+          <i className="fa-solid fa-user"></i>
         </button>
       </div>
       <div className="Header__Cart">
         <button>
           <div className="cart__count">0</div>
-          <i class="fa-solid fa-cart-shopping"></i>
+          <i className="fa-solid fa-cart-shopping"></i>
         </button>
       </div>
     </div>

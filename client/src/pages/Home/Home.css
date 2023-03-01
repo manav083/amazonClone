@@ -4,9 +4,10 @@
     background-color: var(--bgColor);
 }
 .Categories__container{
+    position: relative;
     width: 100%;
     display: flex;
     flex-wrap: wrap;
     padding: 20px;
-    transform: translateY(-300px);
+    margin-top:-325px;
 }   

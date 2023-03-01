@@ -6,7 +6,7 @@ require("./db");
 const morgan = require("morgan");
 const router = require("./Routers/router");
 
-app.use(morgan('common'));
+app.use(morgan("common"));
 app.use(cors());
 app.use(express.json());
 

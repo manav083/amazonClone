@@ -11,7 +11,7 @@ const SideBar = ({ sideBarStatus, setSideBarStatus }) => {
         <div className="SideBar__Drawer__header">
           <h3>SideBar Header</h3>
           <button onClick={() => setSideBarStatus()}>
-            <i class="fa-solid fa-xmark"></i>
+            <i className="fa-solid fa-xmark"></i>
           </button>
         </div>
         <div className="SideBar__Drawer__items">Item 1</div>

@@ -2,12 +2,14 @@
     position: relative;
     height: 600px;
     width: 100%;
+    z-index: 0;
+    overflow: hidden;
 }
 .Slider > img{
-    height: 100%;
+    height: 120%;
     width: 100%;
     object-fit: cover;
-    object-position: top;
+    object-position:  center top;
 }
 .Slider__fadein{
     position: absolute;
@@ -15,4 +17,5 @@
     height: 50%;
     width: 100%;
     background-image:linear-gradient(to top  , var(--bgColor)  , transparent) ;
+    z-index: 0;
 }
