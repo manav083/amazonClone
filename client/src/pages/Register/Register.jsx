@@ -1,30 +1,39 @@
 import React, { useState } from "react";
 import Input from "../../Components/Input/Input";
-import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
 import Button from "../../Components/Button/Button";
+import "./Register.css";
+import "../Login/Login.css";
+import { Link } from "react-router-dom";
 import axios from "axios";
-import "./Login.css";
+import { useNavigate } from "react-router-dom";
 
-const ROOT_URL = import.meta.env.VITE_API_URL_LOCAL;
-
-const Login = () => {
+const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
+  const [mobile, setMobile] = useState("");
   const navigate = useNavigate();
 
-  const login = async(e) => {
+  const ROOT_URL = import.meta.env.VITE_API_URL_LOCAL;
+
+
+  const register = async(e) => {
     e.preventDefault();
     // console.log("first")
     try{
       const data = {
         email: email, 
-        password: password
+        password: password,
+        name: name,
+        phoneNumber: mobile,
+        user_type: "buyer",
       }
-      const result = await axios.post(`${ROOT_URL}/login`, data);
+      const result = await axios.post(`${ROOT_URL}/register`, data);
       if(result.status == 200){
         setEmail("");
         setPassword("");
+        setName("");
+        setMobile("");
         navigate("/");
       }
       // console.log(result);
@@ -45,9 +54,25 @@ const Login = () => {
             fontSize: 26,
           }}
         >
-          Sign in
+          Create Account
         </h1>
-        <form onSubmit={login}>
+        <form onSubmit={register}>
+          <Input
+            type="text"
+            require="true"
+            placeholder="Name"
+            id="name"
+            action={(e) => setName(e.target.value)}
+            value={name}
+          />
+          <Input
+            type="number"
+            require="true"
+            placeholder="Phone Number"
+            id="phonenumber"
+            action={(e) => setMobile(e.target.value)}
+            value={mobile}
+          />
           <Input
             type="email"
             require="true"
@@ -64,22 +89,16 @@ const Login = () => {
             action={(e) => setPassword(e.target.value)}
             value={password}
           />
-          <Button buttonText="Sign in" />
+          <Button buttonText="Register" />
         </form>
         <div className="bottomLine">
-          <p>New to Ecommerce?</p>
-        </div>
-        <div className="bottomLink">
-          <Link to="/register">
-            <p>Create Your Ecommerce Account</p>
-          </Link>
+          <p>
+            Already have an account? <Link to="/login">Sign in</Link>
+          </p>
         </div>
       </div>
-      {/* <div className="animationDiv">
-
-      </div> */}
     </div>
   );
 };
 
-export default Login;
+export default Register;
