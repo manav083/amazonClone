@@ -3,19 +3,21 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 
 
-const Register = async(req, res) => {
-    try{
-        const {name, email, password, phoneNumber} = req.body;
-        if(!(name && email && password && phoneNumber)){
+const Register = async (req, res) => {
+    try {
+        const { name, email, password, phoneNumber } = req.body;
+        // console.log("req.body:::", req.body)
+        if (!(name && email && password && phoneNumber)) {
             res.status(201).send("All Inputs Required !");
-        }else{
-            const oldUser = await User.findOne({email});
-            if(oldUser){
-                req.status(201).send("User Already Exists. Please Login!");
-            }else{
+        } else {
+            const oldUser = await User.findOne({ email });
+            if (oldUser) {
+                console.log(oldUser);
+                res.status(201).send("User Already Exists. Please Login!");
+            } else {
                 const encryptedPassword = await bcrypt.hash(password, 10);
 
-                const user = await User.create({
+                await User.create({
                     name,
                     phone_number: phoneNumber,
                     email: email.toLowerCase(), // sanitize: convert email to lowercase
@@ -23,9 +25,13 @@ const Register = async(req, res) => {
                     user_type: "buyer"
                 });
 
+                const user = await User.findOne({ email }, {password: 0}).lean();
+
+                // delete user["password"];
+                console.log(user);
                 // Create token
                 const token = jwt.sign(
-                    { id: user._id, email, name, phone_number: phoneNumber, user_type: "buyer" },
+                    { id: user._id, email, userName: user.name, phone_number: user.phone_number, user_type: user.user_type },
                     process.env.Token_key,
                     {
                         expiresIn: "2h",
@@ -40,42 +46,46 @@ const Register = async(req, res) => {
             }
         }
 
-    }catch(e){
+    } catch (e) {
         res.send(e);
     }
 }
 
 
-const Login = async(req,res) => {
+const Login = async (req, res) => {
     const email = req.body.email;
     const password = req.body.password;
 
-    try{
-        if(!(email && password)){
+    try {
+        if (!(email && password)) {
             res.status(201).send("All fields are required!!")
-        }else {
-            const user = await User.findOne({email});
-            if(user){
-                if(await bcrypt.compare(password, user.password)){
+        } else {
+            const user = await User.findOne({ email }).lean();
+            if (user) {
+                if (await bcrypt.compare(password, user.password)) {
                     // console.log("inside!!!")
                     // console.log("user::::", user);  
+                    // const user = await User.findOne({ email }, { password: 0 });
+
                     const token = jwt.sign(
                         { id: user._id, email, userName: user.name, phone_number: user.phone_number, user_type: user.user_type },
                         process.env.Token_key,
                         {
                             expiresIn: "2h",
                         }
-                        )
-                        user.token = token;
-                        res.status(200).send(user);
-                }else{
+                    )
+                    user.token = token;
+                    delete user.password;
+
+                    res.status(200).send(user);
+                } else {
                     res.status(201).send("Invalid Credentials !");
                 }
-            }else{
+            } else {
                 res.status(201).send("User does not exist! Please Create your account first.")
             }
         }
-    }catch(e){
+    } catch (e) {
         res.send(e);
     }
 }

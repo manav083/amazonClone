@@ -6,6 +6,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  /* align-items: center; */
   padding: 100px;
 }
 
@@ -63,3 +64,19 @@
     color: whitesmoke;
     text-decoration: none;
 }
+
+
+/* .animationDiv{
+  background-color: red;
+  height: 300px;
+  width: 300px;
+  /* animation: jayant 4s cubic-bezier(0.175, 0.885, 0.32, 1.275) 1s infinite; */
+  animation: name duration timing-function delay iteration-count direction fill-mode;
+}
+
+@keyframes jayant {
+  50%{
+    transform: translate(-400px, -400px) rotate(360deg);
+    background-color: blue;
+  }
+} */

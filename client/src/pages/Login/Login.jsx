@@ -1,12 +1,37 @@
 import React, { useState } from "react";
 import Input from "../../Components/Input/Input";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Button from "../../Components/Button/Button";
+import axios from "axios";
 import "./Login.css";
+
+const ROOT_URL = import.meta.env.VITE_API_URL_LOCAL;
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+
+  const login = async(e) => {
+    e.preventDefault();
+    // console.log("first")
+    try{
+      const data = {
+        email: email, 
+        password: password
+      }
+      const result = await axios.post(`${ROOT_URL}/login`, data);
+      if(result.status == 200){
+        setEmail("");
+        setPassword("");
+        navigate("/");
+      }
+      // console.log(result);
+    }catch(e){
+      console.log(e);
+    }
+  }
 
   //   console.log(email);
   return (
@@ -22,7 +47,7 @@ const Login = () => {
         >
           Sign in
         </h1>
-        <form>
+        <form onSubmit={login}>
           <Input
             type="email"
             require="true"
@@ -50,6 +75,9 @@ const Login = () => {
           </Link>
         </div>
       </div>
+      {/* <div className="animationDiv">
+
+      </div> */}
     </div>
   );
 };
