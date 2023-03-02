@@ -9,6 +9,7 @@
     transition: .4s;
     position: sticky;
     top: 0;
+    z-index: 9;
 }
 .Header > div{
     height: 100%;
@@ -62,17 +63,17 @@
     outline: none;
     cursor: pointer;
     /* background-color: rgba(245, 245, 245); */
-    background-color: rgb(255, 196, 0);
+    background-color: rgb(255,187,0);
     color: #222;
 }
 .Header__Username{
     width: 200px;
 }
 .Header__Account{
-    width: 80px;
+    width: 60px;
 }
 .Header__Cart{
-    width: 80px;
+    width: 60px;
 }
 .Header__Account>button,.Header__Cart>button{
     display: flex;
@@ -91,4 +92,16 @@
 }
 .Header__Account>button:hover,.Header__Cart>button:hover{
     background: rgba(245, 245, 245, 0.1);
+}
+.cart__count{
+    position: absolute;
+    height: 20px;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    background-color: #555;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translate(10px,-10px);
 }

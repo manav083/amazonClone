@@ -1,5 +1,13 @@
 .Home{
-    height: 100vh;
+    min-height: 100vh;
     width: 100%;
     background-color: var(--bgColor);
 }
+.Categories__container{
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+    margin-top:-325px;
+}   
