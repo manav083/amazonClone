@@ -11,27 +11,31 @@ const ROOT_URL = import.meta.env.VITE_API_URL_LOCAL;
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [animationFlag, setAnimationFlag] = useState(false);
   const navigate = useNavigate();
 
-  const login = async(e) => {
+  const login = async (e) => {
     e.preventDefault();
     // console.log("first")
-    try{
+    try {
       const data = {
-        email: email, 
-        password: password
-      }
+        email: email,
+        password: password,
+      };
       const result = await axios.post(`${ROOT_URL}/login`, data);
-      if(result.status == 200){
+      if (result.status == 200) {
+        setAnimationFlag(true);
         setEmail("");
         setPassword("");
-        navigate("/");
+        setTimeout(() => {
+          navigate("/");
+        }, 1000);
       }
       // console.log(result);
-    }catch(e){
+    } catch (e) {
       console.log(e);
     }
-  }
+  };
 
   //   console.log(email);
   return (
@@ -75,9 +79,13 @@ const Login = () => {
           </Link>
         </div>
       </div>
-      {/* <div className="animationDiv">
-
-      </div> */}
+      <div
+        className={
+          !animationFlag ? "sideImg animationDiv" : "sideImg animationDiv2"
+        }
+      >
+        <img src="https://img.fortawesome.com/1ce05b4b/ad-pro-visuals.svg" />
+      </div>
     </div>
   );
 };
