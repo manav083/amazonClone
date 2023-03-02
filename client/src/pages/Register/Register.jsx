@@ -5,6 +5,7 @@ import "./Register.css";
 import "../Login/Login.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { Post } from "../../helper.js";
 import { useNavigate } from "react-router-dom";
 
 const Register = () => {
@@ -12,35 +13,38 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
   const [mobile, setMobile] = useState("");
+  const [animationFlag, setAnimationFlag] = useState(false);
   const navigate = useNavigate();
 
-  const ROOT_URL = import.meta.env.VITE_API_URL_LOCAL;
+  // console.log(helper)
 
-
-  const register = async(e) => {
+  const register = async (e) => {
     e.preventDefault();
     // console.log("first")
-    try{
+    try {
       const data = {
-        email: email, 
+        email: email,
         password: password,
         name: name,
         phoneNumber: mobile,
         user_type: "buyer",
-      }
-      const result = await axios.post(`${ROOT_URL}/register`, data);
-      if(result.status == 200){
+      };
+      const result = Post("register", data);
+      if (result) {
         setEmail("");
         setPassword("");
+        setAnimationFlag(true);
         setName("");
         setMobile("");
-        navigate("/");
+        setTimeout(() => {
+          navigate("/");
+        }, 1000);
       }
       // console.log(result);
-    }catch(e){
+    } catch (e) {
       console.log(e);
     }
-  }
+  };
 
   //   console.log(email);
   return (
@@ -96,6 +100,13 @@ const Register = () => {
             Already have an account? <Link to="/login">Sign in</Link>
           </p>
         </div>
+      </div>
+      <div
+        className={
+          !animationFlag ? "sideImg animationDiv" : "sideImg animationDiv2"
+        }
+      >
+        <img src="https://img.fortawesome.com/1ce05b4b/ad-pro-visuals.svg" />
       </div>
     </div>
   );
