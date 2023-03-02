@@ -1,12 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Input from "../../Components/Input/Input";
 import Button from "../../Components/Button/Button";
 import "./Register.css";
 import "../Login/Login.css";
 import { Link } from "react-router-dom";
-import axios from "axios";
 import { Post } from "../../helper.js";
 import { useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from 'react-redux'
+import { setUser } from "../../Reducers/userReducer";
 
 const Register = () => {
   const [email, setEmail] = useState("");
@@ -15,6 +16,9 @@ const Register = () => {
   const [mobile, setMobile] = useState("");
   const [animationFlag, setAnimationFlag] = useState(false);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.user.value);
+  
 
   // console.log(helper)
 
@@ -31,6 +35,7 @@ const Register = () => {
       };
       const result = Post("register", data);
       if (result) {
+        dispatch(setUser(result));
         setEmail("");
         setPassword("");
         setAnimationFlag(true);
@@ -45,6 +50,13 @@ const Register = () => {
       console.log(e);
     }
   };
+
+  useEffect(() => {
+    let user = localStorage.getItem("user");
+    if(user){
+      navigate("/");
+    }
+  }, []);
 
   //   console.log(email);
   return (
