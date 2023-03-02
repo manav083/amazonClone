@@ -3,6 +3,7 @@ import { createBrowserRouter } from "react-router-dom";
 import Login from "./pages/Login/Login";
 import App from "./App";
 import Register from "./pages/Register/Register";
+import CategoryPage from "./pages/CategoryPage/CategoryPage";
 
 let element = createBrowserRouter([
   {
@@ -16,6 +17,10 @@ let element = createBrowserRouter([
   {
     path: "/register",
     element: <Register />,
+  },
+  {
+    path: "/CategoryPage",
+    element: <CategoryPage />,
   },
 ]);
 

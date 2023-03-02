@@ -16,5 +16,9 @@ app.post("/login", UserController.Login);
 app.post("/register", UserController.Register);
 
 app.get("/getProducts", ProductController.getProducts);
+app.get(
+  "/getProdutsByCategories/:category",
+  ProductController.getProdutsByCategories
+);
 
 module.exports = app;

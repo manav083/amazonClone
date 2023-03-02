@@ -22,7 +22,7 @@ const Header = () => {
         />
       </div>
       <div className="Header__Logo">
-        <h2>Logo</h2>
+        <h2>Deepak</h2>
       </div>
       <div className="Header__Location">
         <button onClick={() => setModalStatus(!modalStatus)}>
