@@ -25,7 +25,7 @@
     overflow-x: scroll;
 }
 .CategoriesHeader__categories::-webkit-scrollbar{
-    height: 1px;
+    height: 2px;
     background-color: #0e0e0e;
     
 }
