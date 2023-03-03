@@ -8,8 +8,8 @@ const CategoriesHeader = () => {
   const [sideBarStatus, setSideBarStatus] = useState(false);
   const navigate = useNavigate();
 
-  const toCategoryPage = () => {
-    navigate("/categoryPage");
+  const toCategoryPage = (category) => {
+    navigate(`/categoryPage/${category}`);
   };
 
   return (
@@ -27,7 +27,7 @@ const CategoriesHeader = () => {
       </div>
       <div className="CategoriesHeader__categories">
         {Categories.map((e) => (
-          <p onClick={() => toCategoryPage()}>{e}</p>
+          <p onClick={() => toCategoryPage(e)}>{e}</p>
         ))}
       </div>
     </div>

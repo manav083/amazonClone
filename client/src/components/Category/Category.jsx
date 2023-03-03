@@ -26,9 +26,9 @@ const Category = ({ single, category }) => {
     return arr;
   };
 
-  const toCategoryPage = async () => {
-    navigate("/categoryPage");
-  };
+  // const toCategoryPage = async () => {
+  //   navigate("/categoryPage");
+  // };
 
   useEffect(() => {
     fetchDataByCategory();
@@ -36,7 +36,10 @@ const Category = ({ single, category }) => {
   }, [category]);
 
   return (
-    <div className="Category" onClick={() => toCategoryPage()}>
+    <div
+      className="Category"
+      onClick={() => navigate(`/categoryPage/${category}`)}
+    >
       <h2>{category}</h2>
       <div className="Category__imageContainer">
         {data.length !== 0 && single ? (
