@@ -5,4 +5,10 @@ const getProducts = async (req, res) => {
   res.send(products);
 };
 
-module.exports = { getProducts };
+const getProdutsByCategories = async (req, res) => {
+  const categories = await Product.find({
+    category: req.params.category,
+  }).select("title thumbnail");
+  res.send(categories);
+};
+module.exports = { getProducts, getProdutsByCategories };

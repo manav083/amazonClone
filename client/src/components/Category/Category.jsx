@@ -1,21 +1,61 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Category.css";
+import { useNavigate } from "react-router-dom";
 
-const Category = ({ name, image, id }) => {
+import axios from "axios";
+
+const Category = ({ single, category }) => {
+  const navigate = useNavigate();
+  const [data, setData] = useState([]);
+
+  const fetchDataByCategory = async () => {
+    const res = await axios.get(
+      `http://localhost:5000/getProdutsByCategories/${category}`
+    );
+    if (res) {
+      setData(res.data);
+    }
+    console.log(res.data, category);
+  };
+
+  const returnArray = () => {
+    let arr = [];
+    for (let i = 0; i < 4; i++) {
+      arr.push(data[i]);
+    }
+    return arr;
+  };
+
+  const toCategoryPage = async () => {
+    navigate("/categoryPage");
+  };
+
+  useEffect(() => {
+    fetchDataByCategory();
+  }, [category]);
+
   return (
-    <div className="Category" key={id}>
-      <h2>{name}</h2>
+    <div className="Category" onClick={() => toCategoryPage()}>
+      <h2>{category}</h2>
       <div className="Category__imageContainer">
-        {image.map((img) => (
+        {data.length !== 0 && single ? (
           <img
-            key={`${name + img}`}
-            className={
-              image.length == 1 ? "Category__single" : "Category__multiple"
-            }
-            src={img}
-            alt={name}
+            key={category}
+            className={"Category__single"}
+            src={data[0].thumbnail}
+            alt={category}
           />
-        ))}
+        ) : (
+          data.length !== 0 &&
+          returnArray().map((elem, index) => (
+            <img
+              key={`${category + elem + index}`}
+              className={"Category__multiple"}
+              src={elem.thumbnail}
+              alt={category}
+            />
+          ))
+        )}
       </div>
       <p>See more</p>
     </div>
