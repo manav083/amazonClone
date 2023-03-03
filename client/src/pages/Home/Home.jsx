@@ -35,7 +35,6 @@ const Home = () => {
 
   return (
     <div className="Home">
-      <Header />
       <Slider />
       <div className="Categories__container">
         <Category category={getRandomCategory()} single />

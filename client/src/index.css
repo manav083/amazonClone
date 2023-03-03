@@ -7,6 +7,7 @@
 }
 body{
     letter-spacing: .5px;
+    background-color: var(--bgColor);
 }body::-webkit-scrollbar{
     width: 0px;
 }
