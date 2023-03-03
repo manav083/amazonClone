@@ -28,7 +28,7 @@ export const Categories = [
 ];
 const Home = () => {
   const getRandomCategory = () => {
-    return Categories[Math.ceil(Math.random() * Categories.length)];
+    return Categories[Math.floor(Math.random() * Categories.length)];
   };
 
   return (

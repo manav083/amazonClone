@@ -19,7 +19,7 @@ let element = createBrowserRouter([
     element: <Register />,
   },
   {
-    path: "/CategoryPage",
+    path: "/CategoryPage/:category",
     element: <CategoryPage />,
   },
 ]);
