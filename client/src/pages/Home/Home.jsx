@@ -1,34 +1,32 @@
 import React from "react";
 import AmazonPrimeTrailer from "../../components/AmazonPrimeTrailer/AmazonPrimeTrailer";
 import Category from "../../components/Category/Category";
-import Header from "../../components/Header/Header";
 import Slider from "../../components/Slider/Slider";
 import "./Home.css";
 
+export const Categories = [
+  "smartphones",
+  "laptops",
+  "fragrances",
+  "skincare",
+  "groceries",
+  "home-decoration",
+  "furniture",
+  "tops",
+  "womens-dresses",
+  "womens-shoes",
+  "mens-shirts",
+  "mens-shoes",
+  "mens-watches",
+  "womens-watches",
+  "womens-bags",
+  "womens-jewellery",
+  "sunglasses",
+  "automotive",
+  "motorcycle",
+  "lighting",
+];
 const Home = () => {
-  const Categories = [
-    "smartphones",
-    "laptops",
-    "fragrances",
-    "skincare",
-    "groceries",
-    "home-decoration",
-    "furniture",
-    "tops",
-    "womens-dresses",
-    "womens-shoes",
-    "mens-shirts",
-    "mens-shoes",
-    "mens-watches",
-    "womens-watches",
-    "womens-bags",
-    "womens-jewellery",
-    "sunglasses",
-    "automotive",
-    "motorcycle",
-    "lighting",
-  ];
-
   const getRandomCategory = () => {
     return Categories[Math.ceil(Math.random() * Categories.length)];
   };

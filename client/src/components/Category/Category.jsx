@@ -32,6 +32,7 @@ const Category = ({ single, category }) => {
 
   useEffect(() => {
     fetchDataByCategory();
+    console.log("fst");
   }, [category]);
 
   return (

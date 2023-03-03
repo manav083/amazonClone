@@ -26,9 +26,6 @@
     justify-content: center;
     /* border: solid 1px blueviolet; */
 }
-.Header__SideBar{
-    width: 60px;
-}
 .Header__Logo{
     width: 150px;
 }

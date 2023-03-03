@@ -10,17 +10,6 @@ const Header = () => {
 
   return (
     <div className="Header">
-      <div className="Header__SideBar">
-        <i
-          className="fa-solid fa-2x fa-bars"
-          style={{ cursor: "pointer" }}
-          onClick={() => setSideBarStatus(!sideBarStatus)}
-        ></i>
-        <SideBar
-          sideBarStatus={sideBarStatus}
-          setSideBarStatus={() => setSideBarStatus(!sideBarStatus)}
-        />
-      </div>
       <div className="Header__Logo">
         <h2>Deepak</h2>
       </div>
