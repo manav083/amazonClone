@@ -6,6 +6,7 @@ const Input = (props) => {
     <>
       <div className="inputContainer">
         <input
+        className="loginInput"
           type={props.type}
           for={props.id}
           style={props.style}
