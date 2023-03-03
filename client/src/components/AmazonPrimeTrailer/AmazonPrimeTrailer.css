@@ -1,0 +1,38 @@
+.AmazonPrimeTrailer{
+    /* padding: 20px; */
+    position: relative;
+    background-color: #111;
+    min-width: 400px;
+    width: calc(50% - 10px);
+    margin: 5px;
+    min-height: 420px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    cursor: pointer;
+}
+.AmazonPrimeTrailer > img{
+    width: 95%;
+    object-fit: contain;
+    transition: .2s;
+}
+.AmazonPrimeTrailer:hover > img{
+    width: 100%;
+}
+.AmazonPrimeTrailer__cover{
+    position: absolute;
+    inset: 0;
+    box-shadow: 0 0 50px #000 inset,0 0 70px #000 inset,0 0 90px #000 inset,0 0 110px #000 inset;
+    color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+.AmazonPrimeTrailer__cover > span{
+    margin-top: auto;
+
+}
+.AmazonPrimeTrailer__cover > span:hover{
+    text-decoration: underline;
+}

@@ -1,0 +1,30 @@
+.inputContainer {
+  /* display: flex; */
+  color: whitesmoke;
+  align-items: center;
+  background-color: none;
+  padding: 5px 15px;
+  position: relative;
+}
+
+.loginInput::placeholder {
+  position: absolute;
+  transition: 0.2s;
+  font-size: 12px;
+  bottom: 10px;
+}
+
+.inputContainer .loginInput {
+  background-color: var(--bgColor);
+  width: 300px;
+  outline: none;
+  color: whitesmoke;
+  height: 60px;
+  border: none;
+  border-bottom: 1px solid whitesmoke;
+  /* border-radius: 5px; */
+}
+
+.loginInput:focus::placeholder {
+  bottom: 70%;
+}

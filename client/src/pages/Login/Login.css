@@ -1,0 +1,109 @@
+.login {
+  background-color: var(--bgColor);
+  color: whitesmoke;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: space-around;
+  align-items: center;
+  padding: 100px;
+}
+
+.loginContainer {
+  min-width: 300px;
+  max-width: 300px;
+  min-height: max-content;
+  max-height: auto;
+}
+
+.bottomLine {
+  position: relative;
+  text-align: center;
+  padding: 15px 8px 15px 13px;
+}
+
+.bottomLine p {
+  font-size: 13px;
+  padding: 5px 10px;
+  color: grey;
+  z-index: 2;
+  position: relative;
+  display: inline-block;
+  background-color: var(--bgColor);
+}
+
+.bottomLine::after {
+  content: "";
+  display: block;
+  position: absolute;
+  padding: 0px;
+  bottom: 45%;
+  /* left: 15px; */
+  height: 1px;
+  width: 100%;
+  border-top: 1px solid grey;
+  background-color: transparent;
+  z-index: 1;
+}
+
+
+.bottomLink{
+    text-decoration: none;
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+    padding: 10px;
+    /* border: 1px solid black; */
+    cursor: pointer;
+    margin: 0px 10px;
+    box-shadow: 2px 2px 5px black;
+}
+
+.bottomLink a{
+    color: whitesmoke;
+    text-decoration: none;
+}
+
+
+.animationDiv{
+  background-color: transparent;
+  height: 300px;
+  width: 200px;
+  
+  animation: jayant 3s ease infinite;
+}
+
+.sideImg{
+  background-color: transparent;
+  height: 300px;
+  width: 200px;
+}
+
+.animationDiv2{
+  animation: jayant1 1s ease forwards;
+}
+
+.animationDiv{
+  animation: jayant 2s ease infinite;
+}
+
+.sideImg img{
+  height: 100%;
+  width: 100%;
+  object-position: center;
+  object-fit: cover;
+}
+
+@keyframes jayant1{
+  to{
+    transform: translateY(-550px);
+  }
+}
+
+@keyframes jayant {
+  50%{
+    transform:  translateY(-50px);
+    /* background-color: blue */
+  }
+}
