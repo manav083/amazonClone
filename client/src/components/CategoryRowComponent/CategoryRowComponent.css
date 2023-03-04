@@ -1,0 +1,41 @@
+.CategoryRowComponent{
+    width: calc(100% - 50px);
+    margin: 10px 25px;
+    
+}
+.CategoryRowComponent > h2{
+    background-color: whitesmoke;
+    padding: 25px;
+    font-size: 30px;
+    padding-bottom: 0;
+}
+
+.CategoryRowComponent__imgContainer{
+    height: 300px;
+    width: calc(100% );
+    display: flex;
+    align-items: left;
+    gap: 30px;
+    padding-inline: 20px;
+    overflow: hidden;
+    overflow-x: scroll;
+    background-color: whitesmoke;
+    scroll-snap-type: x mandatory;
+    scroll-padding:50px;
+}
+.CategoryRowComponent__imgContainer::-webkit-scrollbar{
+    height: 5px;
+}
+.CategoryRowComponent__imgContainer::-webkit-scrollbar-thumb{
+    height: 5px;
+    border-radius: 5px;
+    background-color: grey;
+}
+.CategoryRowComponent__imgContainer > * {
+    scroll-snap-align: start;
+}
+.CategoryRowComponent__imgContainer > img{
+    height: 100%;
+    object-fit: contain;
+    /* width: max-content; */
+}

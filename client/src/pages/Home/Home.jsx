@@ -1,6 +1,7 @@
 import React from "react";
 import AmazonPrimeTrailer from "../../components/AmazonPrimeTrailer/AmazonPrimeTrailer";
 import Category from "../../components/Category/Category";
+import CategoryRowComponent from "../../components/CategoryRowComponent/CategoryRowComponent";
 import Slider from "../../components/Slider/Slider";
 import "./Home.css";
 
@@ -48,6 +49,8 @@ const Home = () => {
         <Category category={getRandomCategory()} />
         <Category category={getRandomCategory()} />
       </div>
+      <CategoryRowComponent category={getRandomCategory()} />
+      <CategoryRowComponent category={getRandomCategory()} />
     </div>
   );
 };

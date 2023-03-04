@@ -1,7 +1,10 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import "./SideBar.css";
 
 const SideBar = ({ sideBarStatus, setSideBarStatus }) => {
+  const navigate = useNavigate();
+
   return (
     <div
       className={`SideBar ${sideBarStatus ? "" : "close"}`}
@@ -14,7 +17,12 @@ const SideBar = ({ sideBarStatus, setSideBarStatus }) => {
             <i className="fa-solid fa-xmark"></i>
           </button>
         </div>
-        <div className="SideBar__Drawer__items">Item 1</div>
+        <div
+          className="SideBar__Drawer__items"
+          onClick={() => navigate("/ProductPage/64004145037b989cbcdcc283")}
+        >
+          Product Page
+        </div>
         <div className="SideBar__Drawer__items">Item 2</div>
         <div className="SideBar__Drawer__items">Item 3</div>
         <div className="SideBar__Drawer__items">Item 4</div>

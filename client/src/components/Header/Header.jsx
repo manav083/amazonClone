@@ -1,16 +1,18 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Modal from "../Modal/Modal";
 import SideBar from "../SideBar/SideBar";
 import "./Header.css";
 
 const Header = () => {
+  const navigate = useNavigate();
   const [modalStatus, setModalStatus] = useState(false);
   const [sideBarStatus, setSideBarStatus] = useState(false);
   const [searchValue, setSearchValue] = useState("");
 
   return (
     <div className="Header">
-      <div className="Header__Logo">
+      <div className="Header__Logo" onClick={() => navigate("/")}>
         <h2>Deepak</h2>
       </div>
       <div className="Header__Location">

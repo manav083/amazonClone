@@ -20,5 +20,6 @@ app.get(
   "/getProdutsByCategories/:category",
   ProductController.getProdutsByCategories
 );
+app.get("/getProductById/:productId", ProductController.getProductById);
 
 module.exports = app;
