@@ -15,7 +15,6 @@ const Category = ({ single, category }) => {
     if (res) {
       setData(res.data);
     }
-    console.log(res.data, category);
   };
 
   const returnArray = () => {
@@ -32,7 +31,6 @@ const Category = ({ single, category }) => {
 
   useEffect(() => {
     fetchDataByCategory();
-    console.log("fst");
   }, [category]);
 
   return (

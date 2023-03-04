@@ -4,7 +4,7 @@
     padding: 10px;
     display: flex;
     /* background-color: white; */
-    background: linear-gradient(to right,#111,#111,#03001C,rgba(48, 30, 103, 0.5),#03001C,#111,#111);
+    background: linear-gradient(to right,#111,#111,#03001C,rgba(48, 30, 103),#03001C,#111,#111);
     /* background: linear-gradient(to right,#111,#111,#03001C,#2D033B,#03001C,#111,#111); */
     background-size: 200%;
     background-position: left;
@@ -28,6 +28,7 @@
 }
 .Header__Logo{
     width: 150px;
+    cursor: pointer;
 }
 .Header__Location{
     width: 200px;

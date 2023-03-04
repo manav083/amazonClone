@@ -27,7 +27,9 @@ const CategoriesHeader = () => {
       </div>
       <div className="CategoriesHeader__categories">
         {Categories.map((e) => (
-          <p onClick={() => toCategoryPage(e)}>{e}</p>
+          <p key={e} onClick={() => toCategoryPage(e)}>
+            {e}
+          </p>
         ))}
       </div>
     </div>
