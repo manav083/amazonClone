@@ -23,9 +23,7 @@ const CategoryRowComponent = ({ category }) => {
     <div className="CategoryRowComponent">
       <h2>{category}</h2>
       <div className="CategoryRowComponent__imgContainer">
-        {data.map((elem) => (
-          <img src={elem.thumbnail} />
-        ))}
+        {data.map((elem) => elem.images.map((e) => <img src={e} />))}
       </div>
     </div>
   );

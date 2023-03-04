@@ -13,13 +13,15 @@
 .CategoryRowComponent__imgContainer{
     height: 300px;
     width: calc(100% );
-    overflow-x: scroll;
     display: flex;
+    align-items: left;
     gap: 30px;
+    padding-inline: 20px;
+    overflow: hidden;
+    overflow-x: scroll;
+    background-color: whitesmoke;
     scroll-snap-type: x mandatory;
     scroll-padding:50px;
-    background-color: whitesmoke;
-    padding: 20px;
 }
 .CategoryRowComponent__imgContainer::-webkit-scrollbar{
     height: 5px;
@@ -32,8 +34,8 @@
 .CategoryRowComponent__imgContainer > * {
     scroll-snap-align: start;
 }
-.CategoryRowComponent > img{
+.CategoryRowComponent__imgContainer > img{
     height: 100%;
     object-fit: contain;
-    width: max-content;
+    /* width: max-content; */
 }
