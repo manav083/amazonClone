@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Modal from "../Modal/Modal";
+import { useSelector, useDispatch } from "react-redux";
 import "./Header.css";
 import axios from "axios";
 import ROOT_URL from "../../config";
@@ -11,6 +12,11 @@ const Header = () => {
   const [searchValue, setSearchValue] = useState("");
   const [searchOptions, setSearchOptions] = useState([]);
   const [searchDropDown, setSearchDropDown] = useState(false);
+  const cartCount = useSelector((state) => state.cart.count);
+  const user = JSON.parse(localStorage.getItem("user"));
+
+
+  // console.log(user);
 
   const getSearchParams = async () => {
     const res = await axios.get(`${ROOT_URL}/getSearchOptions/${searchValue}`);
@@ -81,7 +87,7 @@ const Header = () => {
         </button>
       </div>
       <div className="Header__Username">
-        <span>Welcome! Jayant</span>
+        <span>Welcome! {user.name}</span>
       </div>
       <div className="Header__Account">
         <button>
@@ -90,7 +96,7 @@ const Header = () => {
       </div>
       <div className="Header__Cart">
         <button>
-          <div className="cart__count">0</div>
+          <div className="cart__count">{cartCount}</div>
           <i className="fa-solid fa-cart-shopping"></i>
         </button>
       </div>
