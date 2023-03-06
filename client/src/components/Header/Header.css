@@ -48,13 +48,15 @@
     transition: .2s;
 }
 .Header__SearchBar{
+    position: relative;
     margin-inline: 20px;
     flex: 1;
     display: flex;
-    overflow: hidden;
+    /* overflow: hidden; */
     border-radius: 5px;
 }
 .Header__SearchBar>input{
+    border-radius: 5px 0 0 5px;
     height: 100%;
     flex-grow: 1;
     border: none;
@@ -63,6 +65,7 @@
     background-color: rgba(245, 245, 245);
 }
 .Header__SearchBar>button{
+    border-radius: 0 5px 5px 0;
     height: 100%;
     width: 60px;
     border: none;
@@ -71,6 +74,27 @@
     /* background-color: rgba(245, 245, 245); */
     background-color: rgb(255,187,0);
     color: #222;
+}
+
+.Header__SearchBar__options{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 90%;
+    padding: 20px ;
+    background-color: whitesmoke;
+    /* display: flex; */
+    flex-direction: column;
+    color: #222;
+    font-weight: 550;
+}
+.Header__SearchBar__options > p{
+    padding: 10px;
+    cursor: pointer;
+    transition: .1s;
+}
+.Header__SearchBar__options > p:hover{
+    background-color: lightgray;
 }
 .Header__Username{
     width: 200px;
