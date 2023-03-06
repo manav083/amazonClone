@@ -25,6 +25,7 @@ const getProductById = async (req, res) => {
     console.log(err);
   }
 };
+
 const getSearchOptions = async (req, res) => {
   try {
     const product = await Product.find({
@@ -37,6 +38,8 @@ const getSearchOptions = async (req, res) => {
     console.log(err);
   }
 };
+
+
 module.exports = {
   getProducts,
   getProdutsByCategories,

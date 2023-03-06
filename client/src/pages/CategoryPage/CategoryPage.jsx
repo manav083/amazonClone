@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Header from "../../components/Header/Header";
+import CategoriesHeader from "../../components/CategoriesHeader/CategoriesHeader";
 import "./CategoryPage.css";
 import { useParams } from "react-router-dom";
 import axios from "axios";
@@ -25,6 +26,8 @@ const CategoryPage = () => {
   return (
     <>
       <Header />
+      <CategoriesHeader />
+
       <div className="CategoryPage">
         <div className="CategoryPage__filterSection"></div>
         <div className="CategoryPage__productContainer">

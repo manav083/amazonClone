@@ -15,7 +15,6 @@ const Header = () => {
   const cartCount = useSelector((state) => state.cart.count);
   const user = JSON.parse(localStorage.getItem("user"));
 
-
   // console.log(user);
 
   const getSearchParams = async () => {
@@ -87,7 +86,7 @@ const Header = () => {
         </button>
       </div>
       <div className="Header__Username">
-        <span>Welcome! {user.name}</span>
+        {user ? <span>Welcome! {user.name}</span> : <span>Sign In</span>}
       </div>
       <div className="Header__Account">
         <button>

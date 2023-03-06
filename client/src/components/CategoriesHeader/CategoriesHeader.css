@@ -30,7 +30,7 @@
     
 }
 .CategoriesHeader__categories::-webkit-scrollbar-thumb{
-    background: whitesmoke;
+    background: grey;
 }
 .CategoriesHeader__categories > p{
     white-space: nowrap;

@@ -1,5 +1,6 @@
 const express = require("express");
 const ProductController = require("../Controller/ProductController");
+const CartController = require("../Controller/CartController");
 const app = express();
 const UserController = require("../Controller/UserController");
 
@@ -20,7 +21,11 @@ app.get(
   "/getProdutsByCategories/:category",
   ProductController.getProdutsByCategories
 );
+
 app.get("/getProductById/:productId", ProductController.getProductById);
 app.get("/getSearchOptions/:searchParams", ProductController.getSearchOptions);
+
+app.post("/addToCart", auth, CartController.addToCart);
+
 
 module.exports = app;
