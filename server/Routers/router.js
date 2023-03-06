@@ -21,5 +21,6 @@ app.get(
   ProductController.getProdutsByCategories
 );
 app.get("/getProductById/:productId", ProductController.getProductById);
+app.get("/getSearchOptions/:searchParams", ProductController.getSearchOptions);
 
 module.exports = app;

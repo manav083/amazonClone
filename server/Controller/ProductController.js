@@ -25,4 +25,21 @@ const getProductById = async (req, res) => {
     console.log(err);
   }
 };
-module.exports = { getProducts, getProdutsByCategories, getProductById };
+const getSearchOptions = async (req, res) => {
+  try {
+    const product = await Product.find({
+      title: { $regex: req.params.searchParams, $options: "i" },
+    })
+      .select("title")
+      .limit(10);
+    res.send(product);
+  } catch (err) {
+    console.log(err);
+  }
+};
+module.exports = {
+  getProducts,
+  getProdutsByCategories,
+  getProductById,
+  getSearchOptions,
+};

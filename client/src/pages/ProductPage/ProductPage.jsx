@@ -32,7 +32,7 @@ const ProductPage = () => {
 
   useEffect(() => {
     fetchProduct();
-  }, []);
+  }, [productId]);
 
   return (
     <>
@@ -56,7 +56,7 @@ const ProductPage = () => {
         </div>
         <div className="ProductPage__descriptionSection">
           <p className="ProductPage__descriptionSection__title">
-            {data.title} - <nbsp />
+            {data.title} -
             <span className="ProductPage__descriptionSection__description">
               {data.description}
             </span>
@@ -64,11 +64,11 @@ const ProductPage = () => {
           <p className="ProductPage__descriptionSection__rating">
             rating:
             <span>
-              {returnStars(data.rating).map((star) =>
+              {returnStars(data.rating).map((star, index) =>
                 star == "full" ? (
-                  <i class="fa-solid fa-star"></i>
+                  <i key={index} className="fa-solid fa-star"></i>
                 ) : (
-                  <i class="fa-solid fa-star-half"></i>
+                  <i key={index} className="fa-solid fa-star-half"></i>
                 )
               )}
             </span>
@@ -76,7 +76,7 @@ const ProductPage = () => {
           </p>
 
           <p className="ProductPage__descriptionSection__price">
-            Price: <span>${data.price}</span> <nbsp /> $
+            Price: <span>${data.price}</span> $
             {Math.round(
               data.price - data.price * (data.discountPercentage / 100)
             )}
@@ -93,7 +93,7 @@ const ProductPage = () => {
           </button>
           <button className="ProductPage__descriptionSection__addToWishList">
             <span>
-              <i class="fa-solid fa-heart"></i>
+              <i className="fa-solid fa-heart"></i>
             </span>
             Add To Wishlist
           </button>

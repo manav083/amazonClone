@@ -1,14 +1,24 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Modal from "../Modal/Modal";
-import SideBar from "../SideBar/SideBar";
 import "./Header.css";
+import axios from "axios";
+import ROOT_URL from "../../config";
 
 const Header = () => {
   const navigate = useNavigate();
   const [modalStatus, setModalStatus] = useState(false);
-  const [sideBarStatus, setSideBarStatus] = useState(false);
   const [searchValue, setSearchValue] = useState("");
+  const [searchOptions, setSearchOptions] = useState([]);
+  const [searchDropDown, setSearchDropDown] = useState(false);
+
+  const getSearchParams = async () => {
+    const res = await axios.get(`${ROOT_URL}/getSearchOptions/${searchValue}`);
+    console.log(res);
+    setSearchOptions(res.data);
+  };
+
+  window.addEventListener("click", () => setSearchDropDown(false));
 
   return (
     <div className="Header">
@@ -29,13 +39,43 @@ const Header = () => {
           closeModal={() => setModalStatus(!modalStatus)}
         />
       </div>
-      <div className="Header__SearchBar">
+      <div
+        className="Header__SearchBar"
+        onClick={() => setSearchDropDown(true)}
+      >
         <input
+          className="searchInput"
           type="text"
           placeholder="search here..."
           value={searchValue}
-          onInput={(e) => setSearchValue(e.target.value)}
+          onChange={(e) => {
+            setSearchValue(e.target.value);
+            setSearchDropDown(true);
+            getSearchParams();
+          }}
         />
+        <div
+          className="Header__SearchBar__options"
+          style={{ display: `${searchDropDown ? "flex" : "none"}` }}
+        >
+          {searchOptions.length !== 0 ? (
+            searchOptions.map((opt) => (
+              <p
+                key={opt._id}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  navigate(`/ProductPage/${opt._id}`);
+                }}
+              >
+                {opt.title}
+              </p>
+            ))
+          ) : (
+            <p style={{ color: "#555", fontSize: "14px" }}>
+              options will appear here...
+            </p>
+          )}
+        </div>
         <button>
           <i className="fa-solid fa-2x fa-magnifying-glass"></i>
         </button>
