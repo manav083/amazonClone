@@ -22,6 +22,11 @@ app.get(
   ProductController.getProdutsByCategories
 );
 
+app.post(
+  "/fetchProdutsByCategories",
+  ProductController.fetchProdutsByCategories
+);
+
 app.get("/getProductById/:productId", ProductController.getProductById);
 app.get("/getSearchOptions/:searchParams", ProductController.getSearchOptions);
 

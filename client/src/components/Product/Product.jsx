@@ -89,7 +89,7 @@ const Product = ({ data }) => {
             onClick={() => navigate(`/ProductPage/${data._id}`)}
           >
             Price:
-            <span>₹{calculatePrice(data.discountPercentage, data.price)}</span>
+            <span>${calculatePrice(data.discountPercentage, data.price)}</span>
             <del>{parseFloat(data.price).toFixed(2)}</del>
             <span className="discount">{`(${data.discountPercentage}%off)`}</span>
           </h4>

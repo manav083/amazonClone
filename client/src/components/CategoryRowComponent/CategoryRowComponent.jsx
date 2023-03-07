@@ -4,28 +4,32 @@ import { useNavigate } from "react-router-dom";
 import ROOT_URL from "../../config";
 import "./CategoryRowComponent.css";
 
-const CategoryRowComponent = ({ category }) => {
-  const [data, setData] = useState([]);
+const CategoryRowComponent = ({ data }) => {
+  // const [data, setData] = useState([]);
   const navigate = useNavigate();
+  const [category, setCategory] = useState(data.category);
+  const [products, setProducts] = useState(data.products);
 
-  const fetchDataByCategory = async () => {
-    const res = await axios.get(
-      `${ROOT_URL}/getProdutsByCategories/${category}`
-    );
-    if (res) {
-      setData(res.data);
-    }
-    console.log("Row Component", res.data, category);
-  };
+  // const fetchDataByCategory = async () => {
+  //   const res = await axios.get(
+  //     `${ROOT_URL}/getProdutsByCategories/${category}`
+  //   );
+  //   if (res) {
+  //     setData(res.data);
+  //   }
+  //   console.log("Row Component", res.data, category);
+  // };
 
-  useEffect(() => {
-    fetchDataByCategory();
-  }, []);
+  // useEffect(() => {
+  //   fetchDataByCategory();
+  // }, [category]);
+
+  
   return (
     <div className="CategoryRowComponent">
       <h2>{category}</h2>
       <div className="CategoryRowComponent__imgContainer">
-        {data.map((elem) =>
+        {products.map((elem) =>
           elem.images.map((e) => (
             <img src={e} onClick={() => navigate(`/ProductPage/${elem._id}`)} />
           ))

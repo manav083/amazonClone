@@ -6,6 +6,7 @@ import "./Header.css";
 import axios from "axios";
 import ROOT_URL from "../../config";
 import { getCartDetails } from "../../Actions/cartActions";
+import Location from "../Location/Location";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -18,7 +19,7 @@ const Header = () => {
   const user = JSON.parse(localStorage.getItem("user"));
   const dispatch = useDispatch();
 
-  console.log("products:::::::::::::",products);
+  // console.log("products:::::::::::::",products);
 
   const getSearchParams = async () => {
     const res = await axios.get(`${ROOT_URL}/getSearchOptions/${searchValue}`);
@@ -47,7 +48,7 @@ const Header = () => {
           Select Location
         </button>
         <Modal
-          component={<h1>Working!!!!</h1>}
+          component={<Location />}
           modalStatus={modalStatus}
           closeModal={() => setModalStatus(!modalStatus)}
         />

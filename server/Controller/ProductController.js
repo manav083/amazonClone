@@ -39,10 +39,29 @@ const getSearchOptions = async (req, res) => {
   }
 };
 
+const fetchProdutsByCategories = async (req, res) => {
+  try{
+    const categories = req.body;
+    // console.log(req.body);
+    let array = [];
+
+    for (let i = 0; i < categories.length; i++) {
+      let res = await Product.find({category: categories[i]});
+      array.push({category: categories[i], products: res});
+    }
+    console.log(array);
+    res.send(array);
+
+  }catch(e){
+    res.send(e);
+  }
+}
+
 
 module.exports = {
   getProducts,
   getProdutsByCategories,
   getProductById,
   getSearchOptions,
+  fetchProdutsByCategories,
 };
