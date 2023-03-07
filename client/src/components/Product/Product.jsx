@@ -4,13 +4,12 @@ import "./Product.css";
 import {
   increaseCartCount,
   decreaseCartCount,
+  setProducts
 } from "../../Reducers/cartReducer";
 import { useDispatch } from "react-redux";
-import { addToCart } from "../../Actions/cartActions";
+import { Post } from "../../helper";
 
 const Product = ({ data }) => {
-  // console.log("data::::", data);
-
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [cartFlag, setCartFlag] = useState(false);
@@ -29,11 +28,21 @@ const Product = ({ data }) => {
     return stars;
   };
 
-  const addCart = (id) => {
+  const addCart = async (id) => {
+    // console.log("data::::;", data);
     let productId = id;
-    dispatch(addToCart(productId));
-    dispatch(increaseCartCount());
-    setCartFlag(!cartFlag);
+    try {
+      let res = await Post("addToCart", {productId});
+      // console.log("res", res.data.result);
+      if(res.status === 200){
+        dispatch(increaseCartCount());
+        dispatch(setProducts(res.data.result));
+      }
+      // console.log("fcsgvdhbsfjnkm");
+      return res;
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   const removeFromCart = () => {
@@ -98,7 +107,7 @@ const Product = ({ data }) => {
             | {data.rating}
           </h4>
           {!cartFlag ? (
-            <button className="cartButton" onClick={() => addCart(data.id)}>
+            <button className="cartButton" onClick={() => addCart(data._id)}>
               Add To Cart
             </button>
           ) : (

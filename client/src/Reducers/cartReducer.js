@@ -1,8 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { addToCart } from "../Actions/cartActions";
+import { getCartDetails } from "../Actions/cartActions";
 
 const initialState = {
     count: 0,
+    products: [],
 }
 
 export const cartSlice = createSlice({
@@ -14,18 +15,21 @@ export const cartSlice = createSlice({
         },
         decreaseCartCount: (state) => {
             state.count -= 1;
+        },
+        setProducts: (state, action) => {
+            state.products = [...state.products, action.payload];
         }
     },
     extraReducers: (builder) => {
         builder
-            .addCase(addToCart.fulfilled, (state, action) => {
-                console.log("action.payload", action.payload);
+            .addCase(getCartDetails.fulfilled, (state, action) => {
                 state.count = action.payload.total_count ? action.payload.total_count : state.count;
+                state.products = action.payload.products ? action.payload.products : state.products;
             })
     }
 })
 
 
-export const { increaseCartCount, decreaseCartCount } = cartSlice.actions;
+export const { increaseCartCount, decreaseCartCount, setProducts } = cartSlice.actions;
 
 export default cartSlice.reducer;

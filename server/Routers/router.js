@@ -26,6 +26,7 @@ app.get("/getProductById/:productId", ProductController.getProductById);
 app.get("/getSearchOptions/:searchParams", ProductController.getSearchOptions);
 
 app.post("/addToCart", auth, CartController.addToCart);
+app.get("/getCartDetails", auth, CartController.getCartDetails);
 
 
 module.exports = app;

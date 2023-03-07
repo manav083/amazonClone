@@ -1,13 +1,15 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { Post } from "../helper";
+import { authGet } from "../helper";
 
-export const addToCart = createAsyncThunk(
+
+export const getCartDetails = createAsyncThunk(
     "cart",
-    async (data) => {
+    async () => {
         try {
-            let res = await Post("addToCart", data);
-            console.log("fcsgvdhbsfjnkm");
-            return (res);
+            let res = await authGet("getCartDetails");
+            // console.log("fcsgvdhbsfjnkm");
+            // console.log("res", res);
+            return (res.data);
         } catch (e) {
             console.log(e);
         }

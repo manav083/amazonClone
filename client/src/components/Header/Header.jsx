@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import "./Header.css";
 import axios from "axios";
 import ROOT_URL from "../../config";
+import { getCartDetails } from "../../Actions/cartActions";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -13,9 +14,11 @@ const Header = () => {
   const [searchOptions, setSearchOptions] = useState([]);
   const [searchDropDown, setSearchDropDown] = useState(false);
   const cartCount = useSelector((state) => state.cart.count);
+  const products = useSelector((state) => state.cart.products);
   const user = JSON.parse(localStorage.getItem("user"));
+  const dispatch = useDispatch();
 
-  // console.log(user);
+  console.log("products:::::::::::::",products);
 
   const getSearchParams = async () => {
     const res = await axios.get(`${ROOT_URL}/getSearchOptions/${searchValue}`);
@@ -24,6 +27,11 @@ const Header = () => {
   };
 
   window.addEventListener("click", () => setSearchDropDown(false));
+
+
+  useEffect(() => {
+    dispatch(getCartDetails());
+  }, []);
 
   return (
     <div className="Header">
