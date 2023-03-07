@@ -32,10 +32,10 @@ const Register = async (req, res) => {
                 // Create token
                 const token = jwt.sign(
                     { id: user._id, email, userName: user.name, phone_number: user.phone_number, user_type: user.user_type },
-                    process.env.Token_key,
-                    {
-                        expiresIn: "2h",
-                    }
+                    process.env.TOKEN_KEY,
+                    // {
+                    //     expiresIn: "",
+                    // }
                 );
                 // save user token
                 user.token = token;
@@ -69,10 +69,10 @@ const Login = async (req, res) => {
 
                     const token = jwt.sign(
                         { id: user._id, email, userName: user.name, phone_number: user.phone_number, user_type: user.user_type },
-                        process.env.Token_key,
-                        {
-                            expiresIn: "2h",
-                        }
+                        process.env.TOKEN_KEY,
+                        // {
+                        //     expiresIn: "",
+                        // }
                     )
                     user.token = token;
                     delete user.password;

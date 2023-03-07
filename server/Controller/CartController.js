@@ -11,8 +11,10 @@ const addToCart = async (req, res) => {
             productId: productId,
             userId: user.id,
         })
+        let total_count;
         // console.log(result);
-        res.send({msg: "Added To Cart"});
+        total_count = await Cart.countDocuments({userId: user.id})
+        res.send({msg: "Added To Cart", total_count});
     }catch(e){
         res.send(e);
     }

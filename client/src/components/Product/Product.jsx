@@ -6,6 +6,7 @@ import {
   decreaseCartCount,
 } from "../../Reducers/cartReducer";
 import { useDispatch } from "react-redux";
+import { addToCart } from "../../Actions/cartActions";
 
 const Product = ({ data }) => {
   // console.log("data::::", data);
@@ -28,7 +29,9 @@ const Product = ({ data }) => {
     return stars;
   };
 
-  const addToCart = () => {
+  const addCart = (id) => {
+    let productId = id;
+    dispatch(addToCart(productId));
     dispatch(increaseCartCount());
     setCartFlag(!cartFlag);
   };
@@ -95,7 +98,7 @@ const Product = ({ data }) => {
             | {data.rating}
           </h4>
           {!cartFlag ? (
-            <button className="cartButton" onClick={addToCart}>
+            <button className="cartButton" onClick={() => addCart(data.id)}>
               Add To Cart
             </button>
           ) : (

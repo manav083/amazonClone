@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
-
+import { addToCart } from "../Actions/cartActions";
 
 const initialState = {
-    count: 0
+    count: 0,
 }
 
 export const cartSlice = createSlice({
@@ -15,6 +15,13 @@ export const cartSlice = createSlice({
         decreaseCartCount: (state) => {
             state.count -= 1;
         }
+    },
+    extraReducers: (builder) => {
+        builder
+            .addCase(addToCart.fulfilled, (state, action) => {
+                console.log("action.payload", action.payload);
+                state.count = action.payload.total_count ? action.payload.total_count : state.count;
+            })
     }
 })
 
