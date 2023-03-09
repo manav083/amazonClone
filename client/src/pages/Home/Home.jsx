@@ -38,18 +38,15 @@ const Home = () => {
       let category = Categories[Math.floor(Math.random() * Categories.length)];
       if (!arr.includes(category)) arr.push(category);
     }
-    // console.log(arr);
     if (arr.length === 8) fetchProductsByCategories(arr);
-    // return Categories[Math.floor(Math.random() * Categories.length)];
   };
 
   const fetchProductsByCategories = async (categories) => {
     try {
       const res = await Post("fetchProdutsByCategories", categories);
-      // console.log(res);
       setData(res.data);
     } catch (e) {
-      console.log(e);
+      // console.log(e);
     }
   };
 
@@ -61,7 +58,6 @@ const Home = () => {
     getEightRandomCategory();
   }, []);
 
-  console.log(data[0]);
 
   return (
     <div className="Home">

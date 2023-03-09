@@ -23,12 +23,11 @@ const Header = () => {
 
   const getSearchParams = async () => {
     const res = await axios.get(`${ROOT_URL}/getSearchOptions/${searchValue}`);
-    console.log(res);
+    // console.log(res);
     setSearchOptions(res.data);
   };
 
   window.addEventListener("click", () => setSearchDropDown(false));
-
 
   useEffect(() => {
     dispatch(getCartDetails());
@@ -95,7 +94,11 @@ const Header = () => {
         </button>
       </div>
       <div className="Header__Username">
-        {user ? <span>Welcome! {user.name}</span> : <span>Sign In</span>}
+        {user ? (
+          <span>Welcome! {user.name}</span>
+        ) : (
+          <span onClick={() => navigate("/login")}>Sign In</span>
+        )}
       </div>
       <div className="Header__Account">
         <button>

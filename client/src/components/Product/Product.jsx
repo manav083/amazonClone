@@ -41,7 +41,7 @@ const Product = ({ data }) => {
       // console.log("fcsgvdhbsfjnkm");
       return res;
     } catch (e) {
-      console.log(e);
+      // console.log(e);
     }
   };
 
