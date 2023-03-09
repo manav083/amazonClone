@@ -5,6 +5,7 @@ import App from "./App";
 import Register from "./pages/Register/Register";
 import CategoryPage from "./pages/CategoryPage/CategoryPage";
 import ProductPage from "./pages/ProductPage/ProductPage";
+import Cart from "./pages/Cart/Cart";
 
 let element = createBrowserRouter([
   {
@@ -26,6 +27,10 @@ let element = createBrowserRouter([
   {
     path: "/ProductPage/:productId",
     element: <ProductPage />,
+  },
+  {
+    path: "/Cart",
+    element: <Cart />,
   },
 ]);
 

@@ -1,7 +1,5 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import ROOT_URL from "../../config";
 import "./CategoryRowComponent.css";
 
 const CategoryRowComponent = ({ data }) => {
@@ -9,20 +7,6 @@ const CategoryRowComponent = ({ data }) => {
   const navigate = useNavigate();
   const [category, setCategory] = useState(data.category);
   const [products, setProducts] = useState(data.products);
-
-  // const fetchDataByCategory = async () => {
-  //   const res = await axios.get(
-  //     `${ROOT_URL}/getProdutsByCategories/${category}`
-  //   );
-  //   if (res) {
-  //     setData(res.data);
-  //   }
-  //   console.log("Row Component", res.data, category);
-  // };
-
-  // useEffect(() => {
-  //   fetchDataByCategory();
-  // }, [category]);
 
   
   return (

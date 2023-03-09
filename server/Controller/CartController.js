@@ -4,7 +4,7 @@ const Cart = require("../Models/cart");
 const getCartDetails = async (req, res) => {
     try {
         const user = req.user;
-        const products = await Cart.find({ userId: user.id });
+        const products = await Cart.find({ userId: user.id }).populate("productId");
         const total_count = await Cart.countDocuments({ userId: user.id });
         res.send({ products, total_count });
     } catch (e) {
@@ -34,8 +34,22 @@ const addToCart = async (req, res) => {
     }
 }
 
+const deleteFromCart = async (req, res) => {
+    try{
+        const cartId = req.params.cartId;
+        const res = await Cart.deleteOne({_id: cartId});
+
+        // console.log(res);
+        res.send("hello");
+
+    }catch(e){
+        res.send(e);
+    }
+}
+
 
 module.exports = {
     addToCart,
-    getCartDetails
+    getCartDetails,
+    deleteFromCart
 } 

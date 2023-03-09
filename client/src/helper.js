@@ -54,8 +54,8 @@ export const Put = async (url, data) => {
     }
 }
 
-export const Delete = async (url, data) => {
-    const result = await axios.delete(`${ROOT_URL}/${url}`, data,
+export const Delete = async (url) => {
+    const result = await axios.delete(`${ROOT_URL}/${url}`,
         {
             headers: { authorization: JSON.parse(localStorage.getItem("token")) }
         }

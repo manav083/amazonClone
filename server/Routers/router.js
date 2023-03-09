@@ -27,11 +27,15 @@ app.post(
   ProductController.fetchProdutsByCategories
 );
 
+
+
 app.get("/getProductById/:productId", ProductController.getProductById);
 app.get("/getSearchOptions/:searchParams", ProductController.getSearchOptions);
 
 app.post("/addToCart", auth, CartController.addToCart);
 app.get("/getCartDetails", auth, CartController.getCartDetails);
+app.delete("/deleteProduct/:cartId", auth, CartController.deleteFromCart);
+
 
 
 module.exports = app;

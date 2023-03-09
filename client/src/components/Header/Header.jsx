@@ -15,7 +15,6 @@ const Header = () => {
   const [searchOptions, setSearchOptions] = useState([]);
   const [searchDropDown, setSearchDropDown] = useState(false);
   const cartCount = useSelector((state) => state.cart.count);
-  const products = useSelector((state) => state.cart.products);
   const user = JSON.parse(localStorage.getItem("user"));
   const dispatch = useDispatch();
 
@@ -106,7 +105,7 @@ const Header = () => {
         </button>
       </div>
       <div className="Header__Cart">
-        <button>
+        <button onClick={() => navigate("/Cart")}>
           <div className="cart__count">{cartCount}</div>
           <i className="fa-solid fa-cart-shopping"></i>
         </button>

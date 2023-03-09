@@ -6,7 +6,7 @@ import Slider from "../../components/Slider/Slider";
 import { Post } from "../../helper";
 import "./Home.css";
 
-export const Categories = [
+const Categories = [
   "smartphones",
   "laptops",
   "fragrances",
@@ -50,14 +50,9 @@ const Home = () => {
     }
   };
 
-  const getRandomCategory = () => {
-    return Categories[Math.floor(Math.random() * Categories.length)];
-  };
-
   useEffect(() => {
     getEightRandomCategory();
   }, []);
-
 
   return (
     <div className="Home">
